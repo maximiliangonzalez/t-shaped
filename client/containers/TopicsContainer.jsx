@@ -2,7 +2,16 @@ import React, { useState } from 'react';
 import Topic from '../components/Topic.jsx';
 
 // dummy data to use before setting up database/server
-const dummyData = [{name: 'topic1', confident: false}, {name: 'topic2', confident: false}, {name: 'topic3', confident: false}];
+// at this point, data will need to have the following properties:
+// name (string, name of topic)
+// confident (boolean, whether or not a user is confident in their knowledge of a topic)
+const dummyData = [];
+for (let i = 0; i < 50; i++) {
+  dummyData.push({
+    name: `topic${i}`,
+    confident: false
+  });
+}
 
 export default () => {
   
@@ -12,12 +21,23 @@ export default () => {
     setTopics(prevTopics => {
       // this will have to take place only after database has been successfully updated to reflect change in confidence
       const updatedTopics = [...prevTopics];
-      updatedTopics[index] = {...prevTopics[index], confident: !prevTopics[index].confident}
+      updatedTopics[index] = {
+        ...prevTopics[index], 
+        confident: !prevTopics[index].confident
+      }
       return updatedTopics;
     });
   };
 
-  const topicsDisplay = topics.map(({name, confident}, index) => <Topic name={name} confident={confident} changeConfidence={changeConfidence} key={name} index={index} />);
+  const topicsDisplay = topics.map(({name, confident}, index) => {
+    return <Topic 
+            name={name} 
+            confident={confident} 
+            changeConfidence={changeConfidence} 
+            key={name} 
+            index={index}
+          />
+  });
 
   return (
     <div className="topics-container">
