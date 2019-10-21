@@ -1,3 +1,21 @@
-h1 {
-  color: pink;
+.topics-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.topic {
+  box-sizing: border-box;
+  width: 350px;
+  height: 350px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.topic-learning {
+  background: gray;
+}
+
+.topic-confident {
+  background: green;
 }
