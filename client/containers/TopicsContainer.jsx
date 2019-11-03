@@ -14,10 +14,14 @@ for (let i = 0; i < 50; i++) {
   });
 }
 
+// TopicsContainer: a list of topics a user is following, plus a modal that pops up when a user selects a topic
 export default () => {
   const [topics, setTopics] = useState(dummyData);
+  // if currentTopic is null, the modal will not render anything
+  // if not null, currentTopic will be an object with name, index, and confident properites
   const [currentTopic, setCurrentTopic] = useState(null);
 
+  // if a user changes their confidence in a topic to "learned" the topic will show as green, otherwise it will be gray
   const changeConfidence = index => {
     setTopics(prevTopics => {
       // this will have to take place only after database has been successfully updated to reflect change in confidence
@@ -30,8 +34,10 @@ export default () => {
     });
   };
 
+  // sets currentTopic to null to stop modal from rendering anything
   const close = () => setCurrentTopic(null);
 
+  // the list of followed topics
   const topicsDisplay = topics.map(({name, confident}, index) => {
     return <TopicCard 
             name={name} 

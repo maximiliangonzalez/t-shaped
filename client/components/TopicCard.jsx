@@ -1,15 +1,16 @@
 import React from 'react';
 
-export default ({name, confident, changeConfidence, setCurrentTopic, index}) => {
+// TopicCard: visual representation of a topic a user is following.
+// Clicking on it will render a modal with more info about that topic
+export default ({name, confident, setCurrentTopic, index}) => {
   return (
-    <article onClick={() => setCurrentTopic(name)} className={`topic ${confident ? 'topic-confident' : 'topic-learning'}`}>
+    <article 
+      onClick={() => setCurrentTopic({name, index, confident})} 
+      className={`topic ${confident ? 'topic-confident' : 'topic-learning'}`}
+    >
       <h1>
         {name}
       </h1>
-      {/* move the learn functionality to the */}
-      <button onClick={() => changeConfidence(index)}>
-        {confident ? 'unlearn' : 'learn'}
-      </button>
     </article>
   );
 };
