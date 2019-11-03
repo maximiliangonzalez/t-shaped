@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default ({name, confident, changeConfidence, index}) => {
+export default ({name, confident, changeConfidence, setCurrentTopic, index}) => {
   return (
-    <article className={`topic ${confident ? 'topic-confident' : 'topic-learning'}`}>
+    <article onClick={() => setCurrentTopic(name)} className={`topic ${confident ? 'topic-confident' : 'topic-learning'}`}>
       <h1>
         {name}
       </h1>
