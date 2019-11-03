@@ -34,8 +34,12 @@ export default () => {
     });
   };
 
-  // sets currentTopic to null to stop modal from rendering anything
-  const close = () => setCurrentTopic(null);
+  // if users clicks exit button or anywhere off of the pop-up, close sets currentTopic to null to stop modal from rendering anything
+  const close = e => {
+    if (e.target.id === 'background' || e.target.id === 'close-button') {
+      setCurrentTopic(null);
+    }
+  };
 
   // the list of followed topics
   const topicsDisplay = topics.map(({name, confident}, index) => {
