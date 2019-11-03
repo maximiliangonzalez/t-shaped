@@ -14,7 +14,6 @@ for (let i = 0; i < 50; i++) {
 }
 
 export default () => {
-  
   const [topics, setTopics] = useState(dummyData);
 
   const changeConfidence = index => {
@@ -40,8 +39,8 @@ export default () => {
   });
 
   return (
-    <div className="topics-container">
+    <section className="topics-container">
       {topicsDisplay}
-    </div>
+    </section>
   );
 };
