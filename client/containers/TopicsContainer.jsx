@@ -60,7 +60,7 @@ export default () => {
           changeConfidence={changeConfidence}
           close={close}
         />
-      <section className="topics-container">
+      <section className="container">
         {topicsDisplay}
       </section>
     </>
