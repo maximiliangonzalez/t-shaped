@@ -17,7 +17,7 @@ for (let i = 0; i < 50; i++) {
 export default () => {
   const [topics, setTopics] = useState(dummyData);
   const [currentTopic, setCurrentTopic] = useState(null);
-  
+
   const changeConfidence = index => {
     setTopics(prevTopics => {
       // this will have to take place only after database has been successfully updated to reflect change in confidence
@@ -44,12 +44,15 @@ export default () => {
   });
 
   return (
-    <section className="topics-container">
+    <>
       <TopicModal 
-        currentTopic={currentTopic}
-        close={close}
-      />
-      {topicsDisplay}
-    </section>
+          currentTopic={currentTopic}
+          changeConfidence={changeConfidence}
+          close={close}
+        />
+      <section className="topics-container">
+        {topicsDisplay}
+      </section>
+    </>
   );
 };

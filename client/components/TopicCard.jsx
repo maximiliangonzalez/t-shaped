@@ -6,6 +6,7 @@ export default ({name, confident, changeConfidence, setCurrentTopic, index}) => 
       <h1>
         {name}
       </h1>
+      {/* move the learn functionality to the */}
       <button onClick={() => changeConfidence(index)}>
         {confident ? 'unlearn' : 'learn'}
       </button>
