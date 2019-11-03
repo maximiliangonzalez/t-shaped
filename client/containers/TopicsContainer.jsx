@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Topic from '../components/Topic.jsx';
+import TopicCard from '../components/TopicCard.jsx/index.js';
 
 // dummy data to use before setting up database/server
 // at this point, data will need to have the following properties:
@@ -29,7 +29,7 @@ export default () => {
   };
 
   const topicsDisplay = topics.map(({name, confident}, index) => {
-    return <Topic 
+    return <TopicCard 
             name={name} 
             confident={confident} 
             changeConfidence={changeConfidence} 
