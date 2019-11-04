@@ -56,10 +56,10 @@ export default () => {
   return (
     <>
       <TopicModal 
-          currentTopic={currentTopic}
-          changeConfidence={changeConfidence}
-          close={close}
-        />
+        currentTopic={currentTopic}
+        changeConfidence={changeConfidence}
+        close={close}
+      />
       <section className="container">
         {topicsDisplay}
       </section>

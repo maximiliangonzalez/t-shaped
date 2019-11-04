@@ -39,3 +39,7 @@
 .topic-confident {
   background: green;
 }
+
+.topic-current {
+  background: purple;
+}

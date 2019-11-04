@@ -18,4 +18,4 @@ export default ({currentTopic, changeConfidence, close}) => {
       </section>
     </section>
   ) : null;
-}
+};
