@@ -15,7 +15,7 @@ for (let i = 0; i < 50; i++) {
 }
 
 // TopicsContainer: a list of topics a user is following, plus a modal that pops up when a user selects a topic
-export default () => {
+const TopicsContainer = () => {
   const [topics, setTopics] = useState(dummyData);
   // if currentTopic is null, the modal will not render anything
   // if not null, currentTopic will be an object with name, index, and confident properites
@@ -66,3 +66,5 @@ export default () => {
     </>
   );
 };
+
+export default TopicsContainer;

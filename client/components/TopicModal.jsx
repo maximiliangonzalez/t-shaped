@@ -1,7 +1,7 @@
 import React from 'react';
 
 // TopicModal: a modal with more information about a selected topic
-export default ({currentTopic, changeConfidence, close}) => {
+const TopicModal = ({currentTopic, changeConfidence, close}) => {
   return currentTopic ? (
     <section className="modal" id="background" onClick={e => close(e)}>
       <section className="modal-content">
@@ -19,3 +19,5 @@ export default ({currentTopic, changeConfidence, close}) => {
     </section>
   ) : null;
 };
+
+export default TopicModal;

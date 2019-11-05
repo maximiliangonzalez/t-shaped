@@ -2,7 +2,7 @@ import React from 'react';
 
 // TopicCard: visual representation of a topic a user is following.
 // Clicking on it will render a modal with more info about that topic
-export default ({name, confident, setCurrentTopic, index}) => {
+const TopicCard = ({name, confident, setCurrentTopic, index}) => {
   return (
     <article 
       onClick={() => setCurrentTopic({name, index, confident})} 
@@ -14,3 +14,5 @@ export default ({name, confident, setCurrentTopic, index}) => {
     </article>
   );
 };
+
+export default TopicCard;

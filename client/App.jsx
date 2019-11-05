@@ -1,8 +1,14 @@
 import React from 'react';
 import TopicsContainer from './containers/TopicsContainer.jsx';
+import Navbar from './components/Navbar.jsx';
 
-export default () => {
+const App = () => {
   return (
-    <TopicsContainer />
+    <>
+      <Navbar />
+      <TopicsContainer />
+    </>
   );
 };
+
+export default App;
