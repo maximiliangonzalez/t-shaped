@@ -17,7 +17,9 @@ const TopicModal = ({currentTopic, changeConfidence, close}) => {
         <textarea></textarea>
       </section>
     </section>
-  ) : null;
+  ) : (
+    null
+  );
 };
 
 export default TopicModal;

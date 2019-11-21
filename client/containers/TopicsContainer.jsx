@@ -60,7 +60,7 @@ const TopicsContainer = () => {
         changeConfidence={changeConfidence}
         close={close}
       />
-      <section className="container offset-top">
+      <section className="container">
         {topicsDisplay}
       </section>
     </>
