@@ -22,6 +22,7 @@ const TopicsContainer = () => {
   const [currentTopic, setCurrentTopic] = useState(null);
 
   useEffect(() => {
+    // this is where i want to fetch the current topics once the user has topics they're following
     fetch('/topic')
     .then(res => res.json())
     .then(res => console.log('here is the res', res));
