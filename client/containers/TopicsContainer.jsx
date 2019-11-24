@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import TopicCard from '../components/TopicCard.jsx';
 import TopicModal from '../components/TopicModal.jsx';
 
@@ -16,6 +17,10 @@ for (let i = 0; i < 50; i++) {
 
 // TopicsContainer: a list of topics a user is following, plus a modal that pops up when a user selects a topic
 const TopicsContainer = () => {
+  // this is where the component is going to get the topics from
+  const following = useSelector(store => store.following);
+
+  // once i move these things to the redux store and set up dispatch, get rid of this
   const [topics, setTopics] = useState(dummyData);
   // if currentTopic is null, the modal will not render anything
   // if not null, currentTopic will be an object with name, index, and confident properites
@@ -61,7 +66,7 @@ const TopicsContainer = () => {
   });
 
   return (
-    <>
+    <div className="offset-top">
       <TopicModal 
         currentTopic={currentTopic}
         changeConfidence={changeConfidence}
@@ -70,7 +75,7 @@ const TopicsContainer = () => {
       <section className="container">
         {topicsDisplay}
       </section>
-    </>
+    </div>
   );
 };
 

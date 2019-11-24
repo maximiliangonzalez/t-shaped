@@ -7,9 +7,7 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <div className="offset-top">
-        <TopicsContainer />
-      </div>
+      <TopicsContainer />
     </>
   );
 };
