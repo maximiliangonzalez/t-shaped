@@ -1,10 +1,8 @@
 import React from 'react';
 
-const Navbar = ({setDisplay}) => {
+const Navbar = () => {
   return (
     <section className="navbar">
-      <a onClick={() => setDisplay('topics')}>Topics</a>
-      <a onClick={() => setDisplay('wishlist')}>Wishlist</a>
     </section>
   );
 };
