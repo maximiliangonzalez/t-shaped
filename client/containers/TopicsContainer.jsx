@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import TopicCard from '../components/TopicCard.jsx';
 import TopicModal from '../components/TopicModal.jsx';
+import * as actions from '../actions/actions';
 
 // dummy data to use before setting up database/server
 // at this point, data will need to have the following properties:
@@ -17,21 +18,19 @@ for (let i = 0; i < 50; i++) {
 
 // TopicsContainer: a list of topics a user is following, plus a modal that pops up when a user selects a topic
 const TopicsContainer = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(actions.getTopics());
+  }, []);
+  
   // this is where the component is going to get the topics from
-  const following = useSelector(store => store.following);
-
+  const following = useSelector(store => store.topics.following);
+  console.log('followin', following);
   // once i move these things to the redux store and set up dispatch, get rid of this
   const [topics, setTopics] = useState(dummyData);
   // if currentTopic is null, the modal will not render anything
   // if not null, currentTopic will be an object with name, index, and confident properites
   const [currentTopic, setCurrentTopic] = useState(null);
-
-  useEffect(() => {
-    // this is where i want to fetch the current topics once the user has topics they're following
-    fetch('/topic')
-    .then(res => res.json())
-    .then(res => console.log('here is the res', res));
-  }, []);
 
   // if a user changes their confidence in a topic to "learned" the topic will show as green, otherwise it will be gray
   const changeConfidence = index => {

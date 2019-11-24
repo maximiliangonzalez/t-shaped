@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const { connection } = require('../../config');
 
-mongoose.connect(connection)
+mongoose.connect(connection, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(res => console.log('connected'))
   .catch(err => console.log(err));
 
 const topicSchema = new mongoose.Schema({
