@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TopicCard from '../components/TopicCard.jsx';
 import TopicModal from '../components/TopicModal.jsx';
 
@@ -20,6 +20,12 @@ const TopicsContainer = () => {
   // if currentTopic is null, the modal will not render anything
   // if not null, currentTopic will be an object with name, index, and confident properites
   const [currentTopic, setCurrentTopic] = useState(null);
+
+  useEffect(() => {
+    fetch('/topic')
+    .then(res => res.json())
+    .then(res => console.log('here is the res', res));
+  }, []);
 
   // if a user changes their confidence in a topic to "learned" the topic will show as green, otherwise it will be gray
   const changeConfidence = index => {

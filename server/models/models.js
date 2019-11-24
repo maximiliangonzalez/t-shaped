@@ -6,7 +6,10 @@ mongoose.connect(connection)
 
 const topicSchema = new mongoose.Schema({
   name: String,
-  notes: [String],
+  notes: [{
+    type: String,
+    default: []
+  }],
   confidence: {
     type: Boolean,
     default: false
