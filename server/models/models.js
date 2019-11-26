@@ -18,5 +18,5 @@ const topicSchema = new mongoose.Schema({
 });
 
 module.exports = {
-  Topic: topicSchema
+  Topic: mongoose.model('Topic', topicSchema)
 };
