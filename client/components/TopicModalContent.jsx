@@ -14,7 +14,7 @@ const TopicModalContent = ({close}) => {
     if (currentTopic) {
       fetch(`/topic/notes/${currentTopic._id}`)
       .then(res => res.json())
-      .then(res => {console.log(res); setNotes(res.notes)})
+      .then(res => setNotes(res.notes))
       .catch(err => console.log(err));
     }
   }, [currentTopic]);
