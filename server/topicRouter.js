@@ -1,5 +1,9 @@
 const router = require('express').Router();
-const { getAllTopics, addTopic, deleteTopic, getNotes } = require('./controllers/topicController');
+const { getAllTopics, 
+        addTopic, 
+        deleteTopic, 
+        getNotes, 
+        changeConfidence } = require('./controllers/topicController');
 
 router.get('/', getAllTopics, (req, res) => {
   res.status(200).json(res.locals.data);
@@ -10,6 +14,10 @@ router.post('/', addTopic, (req, res) => {
 });
 
 router.delete('/', deleteTopic, (req, res) => {
+  res.status(200).json(res.locals.data);
+});
+
+router.post('/confidence', changeConfidence, (req, res) => {
   res.status(200).json(res.locals.data);
 });
 

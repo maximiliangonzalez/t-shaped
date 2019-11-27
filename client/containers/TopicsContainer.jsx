@@ -18,19 +18,6 @@ const TopicsContainer = () => {
   // if not null, currentTopic will be an object with name, index, and confident properites
   const [currentTopic, setCurrentTopic] = useState(null);
 
-  // if a user changes their confidence in a topic to "learned" the topic will show as green, otherwise it will be gray
-  const changeConfidence = index => {
-    setTopics(prevTopics => {
-      // this will have to take place only after database has been successfully updated to reflect change in confidence
-      const updatedTopics = [...prevTopics];
-      updatedTopics[index] = {
-        ...prevTopics[index], 
-        confident: !prevTopics[index].confident
-      }
-      return updatedTopics;
-    });
-  };
-
   // if users clicks exit button or anywhere off of the pop-up, close sets currentTopic to null to stop modal from rendering anything
   const close = e => {
     if (['background', 'close-button', 'delete-button'].includes(e.target.id)) {
@@ -52,7 +39,6 @@ const TopicsContainer = () => {
     <div className="offset-top">
       <TopicModal 
         currentTopic={currentTopic}
-        changeConfidence={changeConfidence}
         close={close}
       />
       <section className="container">

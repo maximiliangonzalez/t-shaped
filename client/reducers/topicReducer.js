@@ -18,6 +18,11 @@ const topicReducer = (state = initialState, action) => {
       return {
         ...state,
         following: state.following.filter(topic => topic._id !== action.payload)
+      };
+    case 'changeConfidence':
+      return {
+        ...state,
+        following: state.following.map(topic => topic._id === action.payload ? {...topic, confident: !topic.confident} : topic)
       }
     default:
       return state;

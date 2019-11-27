@@ -11,7 +11,8 @@ const AddTopic = () => {
       <input ref={inputRef}></input>
       <button onClick={() => {
         if (inputRef.current.value !== '') {
-          dispatch(actions.addTopic(inputRef.current.value))
+          dispatch(actions.addTopic(inputRef.current.value));
+          inputRef.current.value = '';
         }
       }}>
         add

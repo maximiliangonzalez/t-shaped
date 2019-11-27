@@ -14,7 +14,7 @@ const topicSchema = new mongoose.Schema({
     type: String,
     default: []
   }],
-  confidence: {
+  confident: {
     type: Boolean,
     default: false
   }
