@@ -30,17 +30,15 @@ const topicReducer = (state = initialState, action) => {
         ...state,
         following: state.following.map(topic => topic._id === action.payload ? {...topic, confident: !topic.confident} : topic)
       };
-    // these actually don't make sense since notes don't get stored in the following array generally - change this to store it on currentTopic instead
-    // this should also fix the problem with updating in TopicModalContent
     case 'addNote':
       return {
         ...state,
-        following: state.following.map(topic => topic._id === action.payload_id ? {...topic, notes: [...topic.notes, action.payload.note]} : topic)
+        currentTopic: {...state.currentTopic, notes: [state.currentTopic.notes, action.payload.note]}
       }
     case 'deleteNote':
       return {
         ...state,
-        following: state.following.map(topic => topic._id === action.payload_id ? {...topic, notes: topic.notes.filter(note => note !== action.payload.note)} : topic)
+        currentTopic: {...state.currentTopic, notes: state.currentTopic.notes.filter(note => note !== action.payload.note)}
       }
     default:
       return state;

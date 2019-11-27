@@ -9,7 +9,7 @@ const TopicCard = ({name, confident, _id, index}) => {
 
   return (
     <article 
-      onClick={() => dispatch(changeCurrentTopic({name, index, confident, _id}))} 
+      onClick={() => dispatch(changeCurrentTopic({name, index, confident, _id, notes: []}))} 
       className={`topic ${confident ? 'topic-confident' : 'topic-learning'}`}
     >
       <h1>
