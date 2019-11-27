@@ -78,8 +78,13 @@ const deleteNote = (req, res, next) => {
 };
 
 const updateNote = (req, res, next) => {
-  res.locals.data = [];
-  return next();
+  Topic.findOneAndUpdate({_id: req.body._id, notes: req.body.oldNote}, {$set: {"notes.$": req.body.updatedNote}}, (err, data) => {
+    if (err) {
+      return next(err);
+    }
+    res.locals.data = data;
+    return next();
+  });
 };
 
 module.exports = {
