@@ -15,11 +15,23 @@ const addTopic = (req, res, next) => {
     if (err) {
       return next(err);
     }
+    res.locals.data = data;
     return next();
   })
 };
 
+const deleteTopic = (req, res, next) => {
+  Topic.findOneAndDelete({name: req.body.name}, (err, data) => {
+    if (err) {
+      return next(err);
+    }
+    res.locals.data = data;
+    return next();
+  })
+}
+
 module.exports = {
   getAllTopics,
-  addTopic
+  addTopic,
+  deleteTopic
 }

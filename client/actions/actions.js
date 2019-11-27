@@ -22,9 +22,13 @@ export const addTopic = name => dispatch => {
     body: JSON.stringify({name})
   })
   .then(res => res.json())
-  .then(() => dispatch({
+  .then(res => {console.log('THIS IS THE RES', res) ; dispatch({
     type: 'addTopic',
-    payload: name
-  }))
+    payload: res
+  })})
   .catch(err => console.log(err));
 };
+
+export const deleteTopic = name => dispatch => {
+
+}

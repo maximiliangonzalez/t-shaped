@@ -12,7 +12,7 @@ const topicReducer = (state = initialState, action) => {
     case 'addTopic':
       return {
         ...state,
-        following: [...state.following, {name: action.payload, confident: false}]
+        following: [...state.following, action.payload]
       }
     default:
       return state;
