@@ -35,6 +35,11 @@ const topicReducer = (state = initialState, action) => {
         ...state,
         following: state.following.map(topic => topic._id === action.payload_id ? {...topic, notes: [...topic.notes, action.payload.note]} : topic)
       }
+    case 'deleteNote':
+      return {
+        ...state,
+        following: state.following.map(topic => topic._id === action.payload_id ? {...topic, notes: topic.notes.filter(note => note !== action.payload.note)} : topic)
+      }
     default:
       return state;
   }

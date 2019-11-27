@@ -66,11 +66,29 @@ const addNote = (req, res, next) => {
   });
 };
 
+// perhaps update note schema so notes have an ID so this doesn't have to search for an entire piece of text
+const deleteNote = (req, res, next) => {
+  Topic.findOneAndUpdate({_id: req.body._id}, {$pull: {notes: req.body.note}}, (err, data) => {
+    if (err) {
+      return next(err);
+    }
+    res.locals.data = data;
+    return next();
+  });
+};
+
+const updateNote = (req, res, next) => {
+  res.locals.data = [];
+  return next();
+};
+
 module.exports = {
   getAllTopics,
   addTopic,
   deleteTopic,
   getNotes,
   addNote,
+  deleteNote,
+  updateNote,
   changeConfidence
 };

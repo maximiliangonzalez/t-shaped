@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeConfidence, deleteTopic, addNote } from '../actions/actions';
+import NoteList from './NoteList.jsx';
 
 // TopicModal: a modal with more information about a selected topic
 const TopicModalContent = ({close}) => {
@@ -36,7 +37,7 @@ const TopicModalContent = ({close}) => {
           X
         </button>
       </section>
-      <div>{JSON.stringify(notes)}</div>
+      <NoteList notes={notes} _id={currentTopic._id}/>
       <textarea ref={noteRef}></textarea>
       <button onClick={() => {
         if (noteRef.current.value !== '') {
