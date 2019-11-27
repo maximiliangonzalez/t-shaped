@@ -89,10 +89,24 @@ export const deleteNote = (_id, note) => dispatch => {
     },
     body: JSON.stringify({_id, note})
   })
-  .then(res => res.json()).then(res => console.log('res from deleting note', res))
   .then(() => dispatch({
     type: 'deleteNote',
     payload: {_id, note}
+  }))
+  .catch(err => console.log(err));
+};
+
+export const updateNote = (_id, oldNote, updatedNote) => dispatch => {
+  fetch('/topic/notes', {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({_id, oldNote, updatedNote})
+  })
+  .then(() => dispatch({
+    type: 'updateNote',
+    payload: {_id, oldNote, updatedNote}
   }))
   .catch(err => console.log(err));
 };

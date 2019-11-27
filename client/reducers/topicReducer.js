@@ -34,12 +34,17 @@ const topicReducer = (state = initialState, action) => {
       return {
         ...state,
         currentTopic: {...state.currentTopic, notes: [state.currentTopic.notes, action.payload.note]}
-      }
+      };
+    case 'updateNote':
+      return {
+        ...state,
+        currentTopic: {...state.currentTopic, notes: state.currentTopic.notes.map(note => note === action.payload.oldNote ? action.payload.newNote : note)}
+      };
     case 'deleteNote':
       return {
         ...state,
         currentTopic: {...state.currentTopic, notes: state.currentTopic.notes.filter(note => note !== action.payload.note)}
-      }
+      };
     default:
       return state;
   }
