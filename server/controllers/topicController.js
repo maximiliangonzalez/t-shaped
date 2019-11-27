@@ -51,7 +51,16 @@ const getNotes = (req, res, next) => {
     if (err) {
       return next(err);
     }
-    console.log(data);
+    res.locals.data = data;
+    return next();
+  });
+};
+
+const addNote = (req, res, next) => {
+  Topic.findOneAndUpdate({_id: req.body._id}, {$push: {notes: req.body.note}}, (err, data) => {
+    if (err) {
+      return next(err);
+    }
     res.locals.data = data;
     return next();
   });
@@ -62,5 +71,6 @@ module.exports = {
   addTopic,
   deleteTopic,
   getNotes,
+  addNote,
   changeConfidence
 };
