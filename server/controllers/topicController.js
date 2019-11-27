@@ -47,8 +47,14 @@ const changeConfidence = (req, res, next) => {
 };
 
 const getNotes = (req, res, next) => {
-  res.locals.data = [];
-  return next();
+  Topic.findOne({_id: req.params._id}, 'notes', (err, data) => {
+    if (err) {
+      return next(err);
+    }
+    console.log(data);
+    res.locals.data = data;
+    return next();
+  });
 };
 
 module.exports = {

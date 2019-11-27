@@ -53,7 +53,7 @@ export const deleteTopic = _id => dispatch => {
 
 export const changeConfidence = _id => dispatch => {
   fetch('/topic/confidence', {
-    method: 'POST',
+    method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
     },

@@ -9,11 +9,13 @@ const TopicModal = ({close}) => {
 
   // call setNotes here so notes for topic can be fetched when opening modal
   useEffect(() => {
-    fetch('/topic/notes')
-    .then(res => res.json())
-    .then(res => {})
-    .catch(err => console.log(err));
-  }, []);
+    if (currentTopic) {
+      fetch(`/topic/notes/${currentTopic._id}`)
+      .then(res => res.json())
+      .then(res => setNotes(res.notes))
+      .catch(err => console.log(err));
+    }
+  }, [currentTopic]);
 
   const dispatch = useDispatch();
 
