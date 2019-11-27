@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import * as actions from '../actions/actions';
 
 // TopicModal: a modal with more information about a selected topic
 const TopicModal = ({currentTopic, changeConfidence, close}) => {
+  const [notes, setNotes] = useState([]);
+  console.log('current topic:', currentTopic);
+
+  useEffect(() => {
+    fetch('/topic/notes')
+    .then(res => res.json())
+    .then(res => {})
+    .catch(err => console.log(err));
+  }, []);
+
   const dispatch = useDispatch();
 
   return currentTopic ? (

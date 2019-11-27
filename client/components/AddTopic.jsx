@@ -9,7 +9,13 @@ const AddTopic = () => {
   return (
     <>
       <input ref={inputRef}></input>
-      <button onClick={() => dispatch(actions.addTopic(inputRef.current.value))}>add</button>
+      <button onClick={() => {
+        if (inputRef.current.value !== '') {
+          dispatch(actions.addTopic(inputRef.current.value))
+        }
+      }}>
+        add
+      </button>
     </>
   )
 };

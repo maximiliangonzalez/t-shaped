@@ -1,7 +1,7 @@
 const { Topic } = require('../models/models');
 
 const getAllTopics = (req, res, next) => {
-  Topic.find({}, (err, data) => {
+  Topic.find({}, 'name confidence', (err, data) => {
     if (err) {
       return next(err);
     }
@@ -21,7 +21,6 @@ const addTopic = (req, res, next) => {
 };
 
 const deleteTopic = (req, res, next) => {
-  console.log('req.body', req.body)
   Topic.findOneAndDelete({_id: req.body._id}, (err, data) => {
     if (err) {
       return next(err);
@@ -31,8 +30,13 @@ const deleteTopic = (req, res, next) => {
   })
 };
 
+const getNotes = (req, res, next) => {
+  return next();
+}
+
 module.exports = {
   getAllTopics,
   addTopic,
-  deleteTopic
+  deleteTopic,
+  getNotes
 };

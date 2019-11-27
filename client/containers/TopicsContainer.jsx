@@ -12,6 +12,7 @@ const TopicsContainer = () => {
   }, []);
   
   const topics = useSelector(store => store.topics.following);
+  console.log(topics);
 
   // if currentTopic is null, the modal will not render anything
   // if not null, currentTopic will be an object with name, index, and confident properites
@@ -41,7 +42,6 @@ const TopicsContainer = () => {
   const topicsDisplay = topics.map((topic, index) => {
     return <TopicCard 
             {...topic}
-            changeConfidence={changeConfidence} 
             setCurrentTopic={setCurrentTopic}
             key={topic._id} 
             index={index}
