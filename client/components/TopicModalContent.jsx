@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeConfidence, deleteTopic } from '../actions/actions';
+import { changeConfidence, deleteTopic, addNote } from '../actions/actions';
 
 // TopicModal: a modal with more information about a selected topic
 const TopicModalContent = ({close}) => {
@@ -19,8 +19,10 @@ const TopicModalContent = ({close}) => {
 
   const dispatch = useDispatch();
 
+  const noteRef = useRef(null);
+
   return (
-    <section className="modal-content">
+    <section className="topic-modal-content">
       <section className="container">
         <h1>{currentTopic.name}</h1>
         <button onClick={() => dispatch(changeConfidence(currentTopic._id))}>
@@ -33,7 +35,14 @@ const TopicModalContent = ({close}) => {
           X
         </button>
       </section>
-      <textarea></textarea>
+      <div>{JSON.stringify(notes)}</div>
+      <textarea ref={noteRef}></textarea>
+      <button onClick={() => {
+        if (noteRef.current.value !== '') {
+          dispatch(addNote(currentTopic._id, noteRef.current.value));
+          noteRef.current.value = '';
+        }
+      }}>add note</button>
     </section>
   );
 };

@@ -59,10 +59,26 @@ export const changeConfidence = _id => dispatch => {
     },
     body: JSON.stringify({_id})
   })
-  .then(res => res.json())
-  .then(res => dispatch({
+  .then(() => dispatch({
     type: 'changeConfidence',
     payload: _id
   }))
   .catch(err => console.log(err));
-}
+};
+
+export const addNote = (_id, note) => dispatch => {
+  fetch('/topic/notes', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({_id, note})
+  })
+  .then(res => res.json())
+  .then(res => console.log('here the res', res))
+  .then(() => dispatch({
+    type: 'addNote',
+    payload: {_id, note}
+  }))
+  .catch(err => console.log(err));
+};

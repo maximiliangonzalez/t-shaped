@@ -29,6 +29,11 @@ const topicReducer = (state = initialState, action) => {
       return {
         ...state,
         following: state.following.map(topic => topic._id === action.payload ? {...topic, confident: !topic.confident} : topic)
+      };
+    case 'addNote':
+      return {
+        ...state,
+        following: state.following.map(topic => topic._id === action.payload_id ? {...topic, notes: [...topic.notes, action.payload.note]} : topic)
       }
     default:
       return state;

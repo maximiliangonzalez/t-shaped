@@ -61,6 +61,7 @@ const addNote = (req, res, next) => {
     if (err) {
       return next(err);
     }
+    console.log('data after push?', data)
     res.locals.data = data;
     return next();
   });
