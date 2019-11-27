@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import * as actions from '../actions/actions';
+import { addTopic } from '../actions/actions';
 
 const AddTopic = () => {
   const inputRef = useRef(null);
@@ -11,7 +11,7 @@ const AddTopic = () => {
       <input ref={inputRef}></input>
       <button onClick={() => {
         if (inputRef.current.value !== '') {
-          dispatch(actions.addTopic(inputRef.current.value));
+          dispatch(addTopic(inputRef.current.value));
           inputRef.current.value = '';
         }
       }}>

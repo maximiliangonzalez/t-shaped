@@ -1,4 +1,8 @@
-// refactor this one later to only get the names and confidence level of topics - we don't need to get the notes etc. until a user clicks on a topic
+export const changeCurrentTopic = topic => ({
+  type: 'changeCurrentTopic',
+  payload: topic
+});
+
 export const getTopics = () => dispatch => {
   fetch('/topic')
   .then(res => res.json())

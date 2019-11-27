@@ -1,9 +1,15 @@
 const initialState = {
-  following: []
+  following: [],
+  currentTopic: null
 }
 
 const topicReducer = (state = initialState, action) => {
   switch(action.type) {
+    case 'changeCurrentTopic':
+      return {
+        ...state,
+        currentTopic: action.payload
+      }
     case 'populateFollowing':
       return {
         ...state,
