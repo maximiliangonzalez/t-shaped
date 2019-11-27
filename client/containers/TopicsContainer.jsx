@@ -11,19 +11,12 @@ const TopicsContainer = () => {
   useEffect(() => {
     dispatch(getTopics());
   }, []);
-
-  // if users clicks exit button or anywhere off of the pop-up, close sets currentTopic to null to stop modal from rendering anything
-  const close = e => {
-    if (['background', 'close-button', 'delete-button'].includes(e.target.id)) {
-      dispatch(changeCurrentTopic(null));
-    }
-  };
   
   const currentTopic = useSelector(store => store.topics.currentTopic);
 
   return (
     <div className="offset-top">
-      <Modal close={close} display={currentTopic}>
+      <Modal closeCriteria={['background', 'close-button', 'delete-button']} closeCallback={() => dispatch(changeCurrentTopic(null))} display={currentTopic}>
         <TopicModalContent />
       </Modal>
       <TopicList />
