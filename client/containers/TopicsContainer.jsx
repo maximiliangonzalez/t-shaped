@@ -4,18 +4,15 @@ import TopicCard from '../components/TopicCard.jsx';
 import TopicModal from '../components/TopicModal.jsx';
 import * as actions from '../actions/actions';
 
-// TopicsContainer: a list of topics a user is following, plus a modal that pops up when a user selects a topic
 const TopicsContainer = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(actions.getTopics());
   }, []);
   
-  // this is where the component is going to get the topics from
   const topics = useSelector(store => store.topics.following);
-  console.log('followin', topics);
-  // once i move these things to the redux store and set up dispatch, get rid of this
-  // const [topics, setTopics] = useState(dummyData);
+
   // if currentTopic is null, the modal will not render anything
   // if not null, currentTopic will be an object with name, index, and confident properites
   const [currentTopic, setCurrentTopic] = useState(null);
@@ -35,19 +32,18 @@ const TopicsContainer = () => {
 
   // if users clicks exit button or anywhere off of the pop-up, close sets currentTopic to null to stop modal from rendering anything
   const close = e => {
-    if (e.target.id === 'background' || e.target.id === 'close-button') {
+    if (['background', 'close-button', 'delete-button'].includes(e.target.id)) {
       setCurrentTopic(null);
     }
   };
 
   // the list of followed topics
-  const topicsDisplay = topics.map(({name, confident}, index) => {
+  const topicsDisplay = topics.map((topic, index) => {
     return <TopicCard 
-            name={name} 
-            confident={confident} 
+            {...topic}
             changeConfidence={changeConfidence} 
             setCurrentTopic={setCurrentTopic}
-            key={name} 
+            key={topic._id} 
             index={index}
           />
   });

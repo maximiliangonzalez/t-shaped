@@ -21,17 +21,18 @@ const addTopic = (req, res, next) => {
 };
 
 const deleteTopic = (req, res, next) => {
-  Topic.findOneAndDelete({name: req.body.name}, (err, data) => {
+  console.log('req.body', req.body)
+  Topic.findOneAndDelete({_id: req.body._id}, (err, data) => {
     if (err) {
       return next(err);
     }
     res.locals.data = data;
     return next();
   })
-}
+};
 
 module.exports = {
   getAllTopics,
   addTopic,
   deleteTopic
-}
+};
