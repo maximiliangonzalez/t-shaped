@@ -7,7 +7,8 @@ const TopicModalContent = ({close}) => {
   const currentTopic = useSelector(store => store.topics.currentTopic);
   const [notes, setNotes] = useState([]);
 
-  // call setNotes here so notes for topic can be fetched when opening modal
+  // Adding notes to the dependency array works for now, but we don't need to refetch every note when a new one is added
+  // Find a better way to have the new note render that doesn't involve refetching a bunch of data (maybe pass callback to reducer?)
   useEffect(() => {
     if (currentTopic) {
       fetch(`/topic/notes/${currentTopic._id}`)
@@ -15,7 +16,7 @@ const TopicModalContent = ({close}) => {
       .then(res => setNotes(res.notes))
       .catch(err => console.log(err));
     }
-  }, [currentTopic]);
+  }, [currentTopic, notes]);
 
   const dispatch = useDispatch();
 
