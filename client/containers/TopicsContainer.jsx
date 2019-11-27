@@ -4,18 +4,6 @@ import TopicCard from '../components/TopicCard.jsx';
 import TopicModal from '../components/TopicModal.jsx';
 import * as actions from '../actions/actions';
 
-// dummy data to use before setting up database/server
-// at this point, data will need to have the following properties:
-// name (string, name of topic)
-// confident (boolean, whether or not a user is confident in their knowledge of a topic)
-const dummyData = [];
-for (let i = 0; i < 50; i++) {
-  dummyData.push({
-    name: `topic${i}`,
-    confident: false
-  });
-}
-
 // TopicsContainer: a list of topics a user is following, plus a modal that pops up when a user selects a topic
 const TopicsContainer = () => {
   const dispatch = useDispatch();
@@ -24,10 +12,10 @@ const TopicsContainer = () => {
   }, []);
   
   // this is where the component is going to get the topics from
-  const following = useSelector(store => store.topics.following);
-  console.log('followin', following);
+  const topics = useSelector(store => store.topics.following);
+  console.log('followin', topics);
   // once i move these things to the redux store and set up dispatch, get rid of this
-  const [topics, setTopics] = useState(dummyData);
+  // const [topics, setTopics] = useState(dummyData);
   // if currentTopic is null, the modal will not render anything
   // if not null, currentTopic will be an object with name, index, and confident properites
   const [currentTopic, setCurrentTopic] = useState(null);

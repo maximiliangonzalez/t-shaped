@@ -6,7 +6,10 @@ mongoose.connect(connection, { useNewUrlParser: true, useUnifiedTopology: true }
   .catch(err => console.log(err));
 
 const topicSchema = new mongoose.Schema({
-  name: String,
+  name: {
+    type: String,
+    required: true
+  },
   notes: [{
     type: String,
     default: []
