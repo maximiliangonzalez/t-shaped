@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TopicsContainer from './containers/TopicsContainer.jsx';
 import Navbar from './components/Navbar.jsx';
 
