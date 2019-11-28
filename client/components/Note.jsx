@@ -15,7 +15,7 @@ const Note = ({note, _id}) => {
       <button onClick={() => setEditing(true)}>edit</button>
       <button onClick={() => dispatch(deleteNote(_id, note))}>delete</button>
       {editing && 
-        <div className="container">
+        <div className="container-compact">
           <textarea ref={editRef}>{note}</textarea>
           <button onClick={() => {
             if (editRef.current.value !== '') {

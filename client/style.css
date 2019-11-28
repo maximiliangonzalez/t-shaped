@@ -32,6 +32,10 @@
   flex-wrap: wrap;
 }
 
+.container-compact {
+  display: flex;
+}
+
 .offset-top {
   margin-top: 60px;
 }
